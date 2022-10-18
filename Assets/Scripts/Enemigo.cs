@@ -13,6 +13,7 @@ public class Enemigo : MonoBehaviour
     public PlayerController jugador;
     public float vida;
     public NavMeshAgent agente;
+    public float dps;
     // Start is called before the first frame update
     void Start()
     {
@@ -70,10 +71,11 @@ public class Enemigo : MonoBehaviour
         {
             estado = Estados.seguir;
         }
+        jugador.CausarDaño(dps * Time.deltaTime);
     }
     void EstadoMuerto()
     {
-
+        Destroy(gameObject);
     }
     void CalcularDistancia()
     {
@@ -85,6 +87,13 @@ public class Enemigo : MonoBehaviour
         Gizmos.DrawWireSphere(transform.position, distanciaSeguir);
         Gizmos.color = Color.red;
         Gizmos.DrawWireSphere(transform.position, distanciaAtacar);
+    }
+    private void OnTriggerEnter(Collider other)
+    {
+        if (other.CompareTag("palo"))
+        {
+            vida--;
+        }
     }
 }
 

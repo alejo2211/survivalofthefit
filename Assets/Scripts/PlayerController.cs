@@ -75,7 +75,7 @@ public class PlayerController : MonoBehaviour
 
         if (Input.GetKeyDown(KeyCode.Space))
         {
-            //Usar Objeto
+            Atacar (); 
         }
 
     }//Movimiento
@@ -106,4 +106,20 @@ public class PlayerController : MonoBehaviour
     {
         GameManager.gameManager._playerHealth.DmgUnit(healing);
     }
+    public void Atacar()
+    {
+        anim.SetTrigger ("ataque1");
+    }
+    public void CausarDaño(float cuanto)
+    {
+        health-= cuanto;
+        if (health <= 0)
+        {
+            Destroy(gameObject);
+        }
+        {
+
+        }
+    }
 }
+
