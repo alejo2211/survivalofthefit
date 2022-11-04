@@ -71,7 +71,6 @@ public class Enemigo : MonoBehaviour
         {
             estado = Estados.seguir;
         }
-        jugador.CausarDaño(dps * Time.deltaTime);
     }
     void EstadoMuerto()
     {

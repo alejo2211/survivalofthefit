@@ -1,6 +1,8 @@
  using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
+using UnityEngine.UI;
 
 public class PlayerController : MonoBehaviour
 {
@@ -14,12 +16,14 @@ public class PlayerController : MonoBehaviour
     public Rigidbody Rig;
     public Vector3 rotacion;
     public float correr = 1.5f;
-    public float health = 100;
     public Joystick j;
     public bool corriendo;
     AudioSource coin;
-    AudioSource hit;
-    // [hit.Play();] en el codigo de daño.
+    public Transform refenciaCamara;
+    public Slider slider;
+    public float dañoEnemigoSolido = 5;
+    //AudioSource hit;
+    // [hit.Play();] en el codigo de daño
     //Añadir Sliders
 
 
@@ -35,10 +39,13 @@ public class PlayerController : MonoBehaviour
     {
         corriendo = b;
     }
-    //Esta funcion se actualiza una vez por frame
+    //Moviento
     void Update()
     {
-
+        if (GameManager.gameManager!=null && GameManager.gameManager._playerHealth!=null)
+        {
+            slider.value = Mathf.Lerp(slider.value, GameManager.gameManager._playerHealth.Health,0.1f);
+        }
         // da entrada y calcula la velocidad segun la tecla presionada 1 * time.deltatime * 5 que es la velocidad o speed
         h = (Input.GetAxis("Horizontal") + j.Horizontal) * Time.deltaTime * speed;// teclas A,D
         v = (Input.GetAxis("Vertical") + j.Vertical ) * Time.deltaTime * speed;// teclas W,S
@@ -53,6 +60,7 @@ public class PlayerController : MonoBehaviour
         }
         // mueve el personaje hacia la direccion calculada respecto al mundo 
         Vector3 vel = new Vector3(h, 0, v);
+        vel = refenciaCamara.rotation * vel;
         transform.Translate(vel, Space.World);
 
         // manda la -magnitud del vector velocidad- para el parametro velocidad del animator 
@@ -61,6 +69,7 @@ public class PlayerController : MonoBehaviour
 
         // el player mira hacia la ultima direccion o en el ultimo punto donde quedo
         rotacion = new Vector3(h, 0, v);
+        rotacion = refenciaCamara.rotation * rotacion;
         if (rotacion.normalized.magnitude > 0.01f)
         {
             transform.forward = rotacion;
@@ -79,26 +88,7 @@ public class PlayerController : MonoBehaviour
         }
 
     }//Movimiento
-    private void OnCollisionEnter(Collision collision)
-    {
-        if (collision.gameObject.tag == "Enemy")
-        {
-
-        }
-    }
-
-    private void OnTriggerEnter(Collider other)
-    {
-        if (other.transform.CompareTag("CoinTemp"))
-        {
-            Destroy(other.gameObject);
-            GameManager.gameManager.AddCoin();
-            coin.Play();
-            PlayerTakenDmg(20);
-            Debug.Log(GameManager.gameManager._playerHealth.Health);
-        }
-    }
-    private void PlayerTakenDmg(int dmg)
+    private void PlayerTakenDmg(float dmg)
     {
         GameManager.gameManager._playerHealth.DmgUnit(dmg);
     }
@@ -110,15 +100,27 @@ public class PlayerController : MonoBehaviour
     {
         anim.SetTrigger ("ataque1");
     }
-    public void CausarDaño(float cuanto)
+    void OnCollisionEnter(Collision collision)
     {
-        health-= cuanto;
-        if (health <= 0)
+        if (collision.transform.CompareTag("EnemigoSolido"))
         {
-            Destroy(gameObject);
+            PlayerTakenDmg(dañoEnemigoSolido);
+           // Debug.Log(GameManager.gameManager._playerHealth.Health);
         }
+    }
+    private void OnTriggerEnter(Collider other)
+    {
+        if (other.transform.CompareTag("CoinTemp"))
         {
-
+            Destroy(other.gameObject);
+            GameManager.gameManager.AddCoin();
+            coin.Play();
+        }
+        //tocar al enemigo hace daño
+        if (other.transform.CompareTag("Enemy"))
+        {
+            PlayerTakenDmg(20);
+            Debug.Log(GameManager.gameManager._playerHealth.Health);
         }
     }
 }

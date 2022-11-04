@@ -12,7 +12,7 @@ public class GameManager : MonoBehaviour
     int count_Coin;
     //Singleton
     public static GameManager gameManager { get; private set; }
-    
+    //Sistema de Salud
     public UnitHealth _playerHealth = new UnitHealth(100, 100);
     //Puntaje y recursos
 
@@ -27,12 +27,20 @@ public class GameManager : MonoBehaviour
             gameManager = this;
         }
     }
+    //Contador de monedas.
     public void AddCoin()
     {
         count_Coin++;
         tex_Count.text = count_Coin.ToString();
     }
+    void Funcion()
+    {
+        if (GameManager.gameManager._playerHealth.Health <= 0) ;
+        {
+            print("correcto");
 
-    //Sistema de Salud
+        }
+    }
+
 
 }

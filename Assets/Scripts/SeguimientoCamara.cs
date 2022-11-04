@@ -6,18 +6,23 @@ public class SeguimientoCamara : MonoBehaviour
 {
     public Transform chibi;
     public float velocidad = 5;
+    public Joystick joy;
+    public float velRotacion;
 
-    public Vector3 diferencia;
+    
+    public Transform referenciaCamara;
 
     void Start()
     {
-        diferencia = transform.position - chibi.position;
+       
+        referenciaCamara.position = chibi.position;
     }
 
     // Update is called once per frame
     void Update()
     {
-        transform.position = Vector3.Lerp(transform.position, chibi.position + diferencia, velocidad * Time.deltaTime); ;
         
+        referenciaCamara.position = Vector3.Lerp(referenciaCamara.position, chibi.position, velocidad * Time.deltaTime); 
+        referenciaCamara.Rotate(0,joy.Horizontal*velRotacion*Time.deltaTime,0);
     }
 }

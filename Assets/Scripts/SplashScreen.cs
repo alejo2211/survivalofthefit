@@ -2,7 +2,8 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
-public class splashscreen : MonoBehaviour
+
+public class SplashScreen : MonoBehaviour
 {
    public EasyTween Logo;
 
@@ -14,7 +15,7 @@ public class splashscreen : MonoBehaviour
      IEnumerator NextScene()
      {
           yield return new WaitForSeconds(2);
-          SceneManager.LoadScene("Game");
+          SceneManager.LoadScene("chibiproto");
      }
    
   
