@@ -235,7 +235,28 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!114 &652396324
+--- !u!224 &866261133
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 866261132}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children:
+  - {fileID: 577684625}
+  m_Father: {fileID: 66197740}
+  m_RootOrder: 6
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0, y: 0}
+  m_AnchorMax: {x: 0, y: 0}
+  m_AnchoredPosition: {x: 146, y: 386.349}
+  m_SizeDelta: {x: 246.21, y: 180.631}
+  m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &866261134
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -465,8 +486,25 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!1 &1915082925
+  m_LocalEulerAnglesHint: {x: 30, y: 0, z: 0}
+--- !u!114 &963194229
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 963194225}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 63c07a5f597d10840aaad0577c7e8ecd, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  chibi: {fileID: 3979213233383429909}
+  velocidad: 10
+  joy: {fileID: 0}
+  velRotacion: 0
+  referenciaCamara: {fileID: 0}
+--- !u!1 &1086301462
 GameObject:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -806,7 +844,54 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1c55fc1a03bedac4f8e229dc53051553, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!4 &2022230417
+  anim: {fileID: 2091183691}
+  speed: 2
+  JumpForce: 10
+  v: 0
+  h: 0
+  prueba: {x: 0, y: 0}
+  Rig: {fileID: 4355774647466855856}
+  rotacion: {x: 0, y: 0, z: 0}
+  correr: 2.5
+  j: {fileID: 522384429}
+  corriendo: 0
+  refenciaCamara: {fileID: 0}
+  slider: {fileID: 0}
+  "da\xF1oEnemigoSolido": 5
+--- !u!136 &4355774647466855861
+CapsuleCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4355774647466855855}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  m_Radius: 1.4997852
+  m_Height: 6.569661
+  m_Direction: 1
+  m_Center: {x: 0.03726573, y: 3.3835826, z: 0.21974681}
+--- !u!1 &4356877828328478052
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 4129377014540237437}
+  - component: {fileID: 2210192938617853309}
+  - component: {fileID: 1738776581242046000}
+  - component: {fileID: 1609510650393560910}
+  m_Layer: 0
+  m_Name: Cube.018
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 1
+  m_StaticEditorFlags: 2147483647
+  m_IsActive: 1
+--- !u!4 &4418473097640757876
 Transform:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
