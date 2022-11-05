@@ -1971,7 +1971,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: 124.1, y: 386.349}
+  m_AnchoredPosition: {x: 146, y: 386.349}
   m_SizeDelta: {x: 246.21, y: 180.631}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &866261134
@@ -2557,7 +2557,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   chibi: {fileID: 3979213233383429909}
   velocidad: 10
-  diferencia: {x: 0, y: 0, z: 0}
+  joy: {fileID: 0}
+  velRotacion: 0
+  referenciaCamara: {fileID: 0}
 --- !u!1 &1086301462
 GameObject:
   m_ObjectHideFlags: 0
@@ -5479,9 +5481,11 @@ MonoBehaviour:
   Rig: {fileID: 4355774647466855856}
   rotacion: {x: 0, y: 0, z: 0}
   correr: 2.5
-  health: 100
   j: {fileID: 522384429}
   corriendo: 0
+  refenciaCamara: {fileID: 0}
+  slider: {fileID: 0}
+  "da\xF1oEnemigoSolido": 5
 --- !u!136 &4355774647466855861
 CapsuleCollider:
   m_ObjectHideFlags: 0
