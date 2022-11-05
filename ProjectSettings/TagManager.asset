@@ -8,6 +8,7 @@ TagManager:
   - Mejora
   - CoinTemp
   - palo
+  - EnemigoSolido
   layers:
   - Default
   - TransparentFX

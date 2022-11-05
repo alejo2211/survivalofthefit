@@ -32,7 +32,7 @@ public class PlayerController : MonoBehaviour
     void Start()//Esta funcion se usa para inicializar (se ejecuta una sola vez)
     {
         originalPosition = transform.position;
-        coin = GameObject.Find("Audios/Coin").GetComponent<AudioSource>();
+        //coin = GameObject.Find("Audios/Coin").GetComponent<AudioSource>();
         //hit = GameObject.Find("Audios/Hit").GetComponent<AudioSource>();
     }
     public void cambiarcorriendo(bool b)
@@ -114,7 +114,7 @@ public class PlayerController : MonoBehaviour
         {
             Destroy(other.gameObject);
             GameManager.gameManager.AddCoin();
-            coin.Play();
+           // coin.Play();
         }
         //tocar al enemigo hace daño
         if (other.transform.CompareTag("Enemy"))
