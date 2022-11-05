@@ -8,7 +8,7 @@ public class GestionVolumen : MonoBehaviour
     void Start()
     {
         AudioListener.volume = PlayerPrefs.GetFloat("VolumenAudio", 0.5f);
-        
+        print(PlayerPrefs.GetFloat("VolumenAudio", 0.5f));
     }
 
     // Update is called once per frame

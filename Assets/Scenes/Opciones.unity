@@ -1776,7 +1776,7 @@ MonoBehaviour:
   m_HandleRect: {fileID: 1384224809}
   m_Direction: 0
   m_MinValue: 0
-  m_MaxValue: 100
+  m_MaxValue: 1
   m_WholeNumbers: 0
   m_Value: 0
   m_OnValueChanged:
@@ -2311,7 +2311,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4702769488751690473, guid: a90d10bdf4301da4aa5ee0f9b0fce642, type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: -0.000045776367
+      value: -0.000061035156
       objectReference: {fileID: 0}
     - target: {fileID: 6411874215229137346, guid: a90d10bdf4301da4aa5ee0f9b0fce642, type: 3}
       propertyPath: m_Name
