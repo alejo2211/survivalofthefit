@@ -22,6 +22,8 @@ public class PlayerController : MonoBehaviour
     public Transform refenciaCamara;
     public Slider slider;
     public float dañoEnemigoSolido = 5;
+    public float vida = 100;
+    public static PlayerController jugador;
     //AudioSource hit;
     // [hit.Play();] en el codigo de daño
     //Añadir Sliders
@@ -31,6 +33,7 @@ public class PlayerController : MonoBehaviour
 
     void Start()//Esta funcion se usa para inicializar (se ejecuta una sola vez)
     {
+        jugador = this;
         originalPosition = transform.position;
         //coin = GameObject.Find("Audios/Coin").GetComponent<AudioSource>();
         //hit = GameObject.Find("Audios/Hit").GetComponent<AudioSource>();
@@ -44,7 +47,7 @@ public class PlayerController : MonoBehaviour
     {
         if (GameManager.gameManager!=null && GameManager.gameManager._playerHealth!=null)
         {
-            slider.value = Mathf.Lerp(slider.value, GameManager.gameManager._playerHealth.Health,0.1f);
+            slider.value = Mathf.Lerp(slider.value, vida,0.1f);
         }
         // da entrada y calcula la velocidad segun la tecla presionada 1 * time.deltatime * 5 que es la velocidad o speed
         h = (Input.GetAxis("Horizontal") + j.Horizontal) * Time.deltaTime * speed;// teclas A,D

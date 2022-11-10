@@ -14,10 +14,11 @@ public class Enemigo : MonoBehaviour
     public float vida;
     public NavMeshAgent agente;
     public float dps;
+    public Animator animaciones;
     // Start is called before the first frame update
     void Start()
     {
-        
+        animaciones = GetComponent<Animator>();
     }
 
     // Update is called once per frame
@@ -44,6 +45,7 @@ public class Enemigo : MonoBehaviour
     }
     void EstadoIdle()
     {
+        animaciones.SetFloat("velocidad", 0);
         if (distancia < distanciaSeguir)
         {
             estado = Estados.seguir;
@@ -51,6 +53,7 @@ public class Enemigo : MonoBehaviour
     }
     void EstadoSeguir()
     {
+        animaciones.SetFloat("velocidad", 10);
         if (distancia < distanciaAtacar)
         {
             estado = Estados.atacar;
@@ -63,6 +66,9 @@ public class Enemigo : MonoBehaviour
     }
     void EstadoAtacar()
     {
+        animaciones.SetFloat("velocidad", 0);
+        animaciones.SetTrigger("ataque1");
+        PlayerController.jugador.vida -= dps * Time.deltaTime;
         if (vida <= 0)
         {
             estado = Estados.muerto;
