@@ -49,6 +49,7 @@ public class PlayerController : MonoBehaviour
         {
             slider.value = Mathf.Lerp(slider.value, vida,0.1f);
         }
+        
         // da entrada y calcula la velocidad segun la tecla presionada 1 * time.deltatime * 5 que es la velocidad o speed
         h = (Input.GetAxis("Horizontal") + j.Horizontal) * Time.deltaTime * speed;// teclas A,D
         v = (Input.GetAxis("Vertical") + j.Vertical ) * Time.deltaTime * speed;// teclas W,S
@@ -89,7 +90,13 @@ public class PlayerController : MonoBehaviour
         {
             Atacar (); 
         }
+        if (vida <= 0)
+        {
+            Debug.Log(GameManager.gameManager);
+            anim.SetTrigger("muerto");
+            this.enabled = false;
 
+        }
     }//Movimiento
     private void PlayerTakenDmg(float dmg)
     {
@@ -108,7 +115,9 @@ public class PlayerController : MonoBehaviour
         if (collision.transform.CompareTag("EnemigoSolido"))
         {
             PlayerTakenDmg(dañoEnemigoSolido);
-           // Debug.Log(GameManager.gameManager._playerHealth.Health);
+
+            // Debug.Log(GameManager.gameManager._playerHealth.Health);
+           
         }
     }
     private void OnTriggerEnter(Collider other)

@@ -15,10 +15,17 @@ public class Enemigo : MonoBehaviour
     public NavMeshAgent agente;
     public float dps;
     public Animator animaciones;
+    public Transform[] checkPoints;
+    Transform cpActual;
+    public int indicecp;
+
+  
     // Start is called before the first frame update
     void Start()
     {
         animaciones = GetComponent<Animator>();
+        indicecp = Random.Range(0, checkPoints.Length);
+        ElegirPunto();
     }
 
     // Update is called once per frame
@@ -45,12 +52,20 @@ public class Enemigo : MonoBehaviour
     }
     void EstadoIdle()
     {
-        animaciones.SetFloat("velocidad", 0);
+        animaciones.SetFloat("velocidad", 1);
         if (distancia < distanciaSeguir)
         {
             estado = Estados.seguir;
         }
+        agente.SetDestination(cpActual.position);
+        if ((transform.position - cpActual.position).magnitude<4)
+        {
+            ElegirPunto();
+
+        }
     }
+
+
     void EstadoSeguir()
     {
         animaciones.SetFloat("velocidad", 10);
@@ -77,10 +92,21 @@ public class Enemigo : MonoBehaviour
         {
             estado = Estados.seguir;
         }
+       
     }
     void EstadoMuerto()
     {
-        Destroy(gameObject);
+        animaciones.SetTrigger("muerto");                  
+        this.enabled = false;
+    }
+    void ElegirPunto()
+    {
+        indicecp += 1;
+        if (indicecp>=checkPoints.Length)
+        {
+            indicecp = 0;
+        }
+        cpActual = checkPoints[indicecp];
     }
     void CalcularDistancia()
     {
