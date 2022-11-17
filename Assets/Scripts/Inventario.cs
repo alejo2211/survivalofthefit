@@ -24,8 +24,13 @@ public class Inventario : MonoBehaviour
     {
         if (Input.GetKeyDown(KeyCode.I))
         {
-            inventarioEnabled = !inventarioEnabled;
+            VerInventario();
         }
+
+    }
+    public void VerInventario()
+    {
+        inventarioEnabled = !inventarioEnabled;
         if (inventarioEnabled == true)
         {
             inventario.SetActive(true);
@@ -34,5 +39,6 @@ public class Inventario : MonoBehaviour
         {
             inventario.SetActive(false);
         }
+
     }
 }
