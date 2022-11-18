@@ -9,6 +9,7 @@ TagManager:
   - CoinTemp
   - palo
   - EnemigoSolido
+  - item
   layers:
   - Default
   - TransparentFX

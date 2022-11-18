@@ -199,7 +199,7 @@ TextureImporter:
         width: 112
         height: 134
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -207,6 +207,27 @@ TextureImporter:
       bones: []
       spriteID: ac840e5d3ce7b7e439249b3132a7fa1d
       internalID: -267010011
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Iconsdd3.fw_4
+      rect:
+        serializedVersion: 2
+        x: 894
+        y: 764
+        width: 130
+        height: 135
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 76dc628d1fdad9d46a89a9b71deb43f7
+      internalID: -544975675
       vertices: []
       indices: 
       edges: []
@@ -222,6 +243,7 @@ TextureImporter:
     weights: []
     secondaryTextures: []
     nameFileIdTable:
+      Iconsdd3.fw_4: -544975675
       Iconsdd3.fw_1: 789324662
       Iconsdd3.fw_2: -1431278784
       Iconsdd3.fw_0: -1282910687
