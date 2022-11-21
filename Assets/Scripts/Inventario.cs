@@ -8,7 +8,7 @@ public class Inventario : MonoBehaviour
     public GameObject inventario;
     private int totalSlots;
     private int enableSlots;
-    private GameObject[] slot;
+    public GameObject[] slot;
     public GameObject slotHolder;
     void Start()
     {
@@ -71,8 +71,11 @@ public class Inventario : MonoBehaviour
 
                 Itemobject.transform.parent = slot[i].transform;
                 Itemobject.SetActive(false);
+                slot[i].GetComponent<slot>().UpdateSlot();
                 slot[i].GetComponent<slot>().empty = false;
+                return;            
             }
+            
         }
     }
 }
