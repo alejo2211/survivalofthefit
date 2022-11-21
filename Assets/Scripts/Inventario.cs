@@ -8,20 +8,13 @@ public class Inventario : MonoBehaviour
     public GameObject inventario;
     private int totalSlots;
     private int enableSlots;
-    public GameObject[] slot;
+    public Slot[] slot;
     public GameObject slotHolder;
+    public bool completado;
     void Start()
     {
         totalSlots = slotHolder.transform.childCount;
-        slot = new GameObject[totalSlots];
-        for (int i = 0; i < totalSlots; i++)
-        {
-            slot[i] = slotHolder.transform.GetChild(i).gameObject;
-            if (slot[i].GetComponent<slot>().item == null)
-            {
-                slot[i].GetComponent<slot>().empty = true;
-            }
-        }
+        
     }
 
     void Update()
@@ -51,28 +44,33 @@ public class Inventario : MonoBehaviour
         {
             GameObject itemPickedUP = other.gameObject;
 
-            item item = itemPickedUP.GetComponent<item>();
+            item item = other.GetComponent<item>();
 
             Additem(itemPickedUP, item.ID, item.type, item.descripcion, item.icon);
         }
     }
     public void Additem(GameObject Itemobject, int ItemID, string ItemType, string ItemDescription, Sprite ItemIcon)
     {
-        for (int i = 0; i < totalSlots; i++)
+        for (int i = 0; i < slot.Length; i++)
         {
-            if (slot[i].GetComponent<slot>().empty)
+
+            if (slot[i].empty)
             {
                 Itemobject.GetComponent<item>().pickedUp = true;
-                slot[i].GetComponent<slot>().item = Itemobject;
-                slot[i].GetComponent<slot>().ID = ItemID;
-                slot[i].GetComponent<slot>().type = ItemType;
-                slot[i].GetComponent<slot>().description = ItemDescription;
-                slot[i].GetComponent<slot>().icon = ItemIcon;
+                slot[i].item = Itemobject;
+                slot[i].ID = ItemID;
+                slot[i].type = ItemType;
+                slot[i].description = ItemDescription;
+                slot[i].icon = ItemIcon;
 
                 Itemobject.transform.parent = slot[i].transform;
                 Itemobject.SetActive(false);
-                slot[i].GetComponent<slot>().UpdateSlot();
-                slot[i].GetComponent<slot>().empty = false;
+                slot[i].UpdateSlot();
+                slot[i].empty = false;
+                if (i==slot.Length-1)
+                {
+                    completado = true;
+                }
                 return;            
             }
             

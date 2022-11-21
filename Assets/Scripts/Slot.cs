@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class slot : MonoBehaviour
+public class Slot : MonoBehaviour
 {
     public GameObject item;
     public int ID;
@@ -11,9 +11,11 @@ public class slot : MonoBehaviour
     public string description;
     public bool empty;
     public Sprite icon;
+    public Image imSlot;
 
     public void UpdateSlot()
     {
-        this.GetComponent<Image>().sprite = icon;
+        imSlot.sprite = icon;
+        imSlot.color = Color.white;
     }
 }
