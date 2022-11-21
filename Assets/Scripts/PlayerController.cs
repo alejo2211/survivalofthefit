@@ -24,6 +24,7 @@ public class PlayerController : MonoBehaviour
     public float dañoEnemigoSolido = 5;
     public float vida = 100;
     public static PlayerController jugador;
+    public GameObject explosion;
     //AudioSource hit;
     // [hit.Play();] en el codigo de daño
     //Añadir Sliders
@@ -94,13 +95,19 @@ public class PlayerController : MonoBehaviour
         {
             Debug.Log(GameManager.gameManager);
             anim.SetTrigger("muerto");
+            Invoke("CargarEscena", 5);
             this.enabled = false;
+            explosion.SetActive(true);
 
         }
     }//Movimiento
     private void PlayerTakenDmg(float dmg)
     {
         GameManager.gameManager._playerHealth.DmgUnit(dmg);
+    }
+    public void CargarEscena()
+    {
+        SceneManager.LoadScene("Game Over");
     }
     private void PlayerHeal(int healing)
     {

@@ -20,4 +20,10 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/Chibiproto.unity
     guid: e4213f5a8ec335e48bd9c8485db84c02
+  - enabled: 1
+    path: Assets/Scenes/Victoria.unity
+    guid: f1414ff2a32486047a950a897b451755
+  - enabled: 1
+    path: Assets/Scenes/Game Over.unity
+    guid: d1890b0dcd2d4fe46a44567eb6a84016
   m_configObjects: {}

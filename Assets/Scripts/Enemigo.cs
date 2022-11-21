@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.AI;
+using UnityEngine.UI;
 
 public class Enemigo : MonoBehaviour
    
@@ -18,6 +19,9 @@ public class Enemigo : MonoBehaviour
     public Transform[] checkPoints;
     Transform cpActual;
     public int indicecp;
+    public ParticleSystem particulasImpacto;
+    public Slider slVida;
+    public GameObject explosion;
 
   
     // Start is called before the first frame update
@@ -96,7 +100,9 @@ public class Enemigo : MonoBehaviour
     }
     void EstadoMuerto()
     {
-        animaciones.SetTrigger("muerto");                  
+        animaciones.SetTrigger("muerto");
+        slVida.gameObject.SetActive(false);
+        explosion.SetActive(true);
         this.enabled = false;
     }
     void ElegirPunto()
@@ -124,6 +130,8 @@ public class Enemigo : MonoBehaviour
         if (other.CompareTag("palo"))
         {
             vida--;
+            particulasImpacto.Play(true);
+            slVida.value = vida;
         }
     }
 }

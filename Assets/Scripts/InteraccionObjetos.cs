@@ -5,6 +5,7 @@ using UnityEngine;
 public class InteraccionObjetos : MonoBehaviour
 {
     public int curacion = 10;
+    public GameObject explosion;
 
     private void OnTriggerEnter(Collider other)
     {
@@ -13,6 +14,7 @@ public class InteraccionObjetos : MonoBehaviour
        
          {
             PlayerController.jugador.vida += curacion ;
+            Instantiate(explosion, transform.position, transform.rotation);
             Destroy(gameObject);
             }
        

@@ -11,6 +11,7 @@ public class Inventario : MonoBehaviour
     public Slot[] slot;
     public GameObject slotHolder;
     public bool completado;
+    public GameObject explosion;
     void Start()
     {
         totalSlots = slotHolder.transform.childCount;
@@ -47,6 +48,7 @@ public class Inventario : MonoBehaviour
             item item = other.GetComponent<item>();
 
             Additem(itemPickedUP, item.ID, item.type, item.descripcion, item.icon);
+            Instantiate(explosion, other.transform.position, other.transform.rotation);
         }
     }
     public void Additem(GameObject Itemobject, int ItemID, string ItemType, string ItemDescription, Sprite ItemIcon)
